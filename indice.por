@@ -1,19 +1,35 @@
-programa{
-    funcao inicio() {
-        programa {
+programa {
   inclua biblioteca Graficos --> graficos 
   inclua biblioteca Util --> util 
+  const inteiro LARGURA = 800
+  const inteiro ALTURA = 500
   funcao inicio() {
     // estas funcionalidades da biblioteca de grafico são para a tela do jogo
     graficos.iniciar_modo_grafico(verdadeiro)
-    graficos.definir_dimensoes_janela(800, 500)
+    graficos.definir_dimensoes_janela(LARGURA, ALTURA)
     graficos.definir_titulo_janela("BATALHA POKEMON RPG ")
+    /**
+     * tipos de variaveis:
+     * inteiro:tipo de responsavel por conter o números inteiros, sem casa decimal,exemplo: idade =18
+     * tipo responsavel por conter números com casas decimais, exemplo: preco = 5.99
+     * caractere = tipo responsavel por conter apenas um caracter, exemplo: sexo = "M"
+     * cadeia = tipo responsavel por conter texto, exemplo: nome = "joaquin"
+     * ico = tipo responsavel por conter valores lógicos, exemplo: cadastrado = falso
+     * vazio: tipo responsavel para executar funçõe que não retornam valor, exemplo: função escreva
+     */
+    cadeia nome_meu_pokemon = "pikachu"
+    inteiro hp_meu_pokemon = 100
+    inteiro max_hp_meu_pokemon = 100
+    //informações do pokemon inimigo
+    cadeia nome_pokemon_inimigo = "gengar"
+    inteiro hp_pokemon_inimigo = 120
+    inteiro max_pokemon_inimigo = 120
     // Desenho do céu da tela
     graficos.definir_cor(graficos.criar_cor(150, 216, 250))
-    graficos.desenhar_retangulo(0,0, 800, 260, falso, verdadeiro)
+    graficos.desenhar_retangulo(0,0, LARGURA, 260, falso, verdadeiro)
     //desenhar da grama da tela do jogo
     graficos.definir_cor(graficos.criar_cor(120, 190, 100))
-    graficos.desenhar_retangulo(0, 260, 800, 240, falso, verdadeiro)
+    graficos.desenhar_retangulo(0, 260, LARGURA, 240, falso, verdadeiro)
     //desenhar a grama do pokemon inimigo
     graficos.definir_cor(graficos.criar_cor(90, 130, 80))
     graficos.desenhar_elipse(475, 165, 250, 65, verdadeiro)
@@ -37,8 +53,4 @@ programa{
    
     
   }
-}
-
-
-    }
 }
