@@ -61,6 +61,7 @@ programa {
     cadeia nome_meu_pokemon = "Pikachu"
     inteiro hp_meu_pokemon = 100
     inteiro max_hp_meu_pokemon = 100
+    inteiro pocoes = 2
     //informações pokemon inimigo
     cadeia nome_pokemon_inimigo = "Gengar"
     inteiro hp_pokemon_inimigo = 120
@@ -79,6 +80,7 @@ programa {
     * Modulo de porcentagem (%) = (valor/100) 
     */
     inteiro dano = util.sorteia(22,35)
+    dano = 119
     hp_pokemon_inimigo = hp_pokemon_inimigo - dano 
     /*
     * Operadores Relacionais:
@@ -97,15 +99,29 @@ programa {
       hp_meu_pokemon = 0
     }
     escreva(">> ", nome_meu_pokemon, " causou ", dano, " de dano! \n")
+    /*
+    * Operadores Lógicos
+    * E - O operador logico que só é verdadeiro se todas as condições forem verdadeiras
+    * Ou - Só um dos valores logicos precisam ser verdadeiros que pelo menos um das condições sejam verdadeiras
+    * Nao - ele inverte o valor lógico
+    */
     escreva(">> Hp restante de ", nome_pokemon_inimigo, ": ", hp_pokemon_inimigo, " | ", max_hp_pokemon_inimigo)
-    graficos_do_jogo(nome_meu_pokemon, nome_pokemon_inimigo, hp_meu_pokemon, hp_pokemon_inimigo, max_hp_meu_pokemon, max_hp_pokemon_inimigo, nome_meu_pokemon+" Causou "+ dano + " de dano!")
+    logico victoria = (hp_pokemon_inimigo == 0) e (hp_pokemon_inimigo <= max_hp_pokemon_inimigo)
+    // Estrutura condina simples aceita as funções de SE e SENAO
+    se(victoria){
+    graficos_do_jogo(nome_meu_pokemon, nome_pokemon_inimigo, hp_meu_pokemon, hp_pokemon_inimigo, max_hp_meu_pokemon, max_hp_pokemon_inimigo, nome_pokemon_inimigo + " desmaiou! Você venceu!")
+    }senao{
+      logico posso_continuar = (hp_pokemon_inimigo > 0) ou (pocoes > 0)
+      graficos_do_jogo(nome_meu_pokemon, nome_pokemon_inimigo, hp_meu_pokemon, hp_pokemon_inimigo, max_hp_meu_pokemon, max_hp_pokemon_inimigo, nome_meu_pokemon+" Causou "+ dano + " de dano!")
+      escreva("\n>> ", nome_pokemon_inimigo, " ainda resiste com ", hp_pokemon_inimigo, " Hp. posso continuar? ",posso_continuar, "\n")
+    }
     logico infinitamente = verdadeiro
     enquanto(infinitamente == verdadeiro){
     se(hp_meu_pokemon == 0 ou hp_pokemon_inimigo == 0){
       infinitamente = falso
       escreva("\nBatalha encerrada!")
     }
-  	util.aguarde(1000)
+  	util.aguarde(5000)
     }
   }
 }
